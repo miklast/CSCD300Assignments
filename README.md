@@ -6,7 +6,7 @@ Completion (as of 1/14:)
 * RemoveFirst: ❌
 * contains: ⭕ (Fails the first test, issue with nulls)
 * remove: ⭕ (fails all tests with nulls)
-* removeAllCopies:
+* removeAllCopies: ❌
 * add: ⭕ (only adds on head)
 * get:❌
 * remove:✔️
