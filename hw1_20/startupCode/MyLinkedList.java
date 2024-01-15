@@ -42,9 +42,7 @@ public class MyLinkedList {
 	// Remove(cut out) the first data node(the node succeeding the dummy node) 
 	//       in this list, then returns the data in the node removed.
 	// If the size of this list is zero, throws an Exception.
-	public Object removeFirst(Object o) throws Exception {
-
-		
+	public Object removeFirst() throws Exception {
 		
 		return null; //change this as you need.
 	}
@@ -54,8 +52,22 @@ public class MyLinkedList {
 	// such that (o==null ? e==null : o.equals(e)).
 	// Note: you have to handle the case where a list node stores null data element.
 	public boolean contains(Object o) {
+
+		if(isEmpty() || o == null) //TODO: This fails test 1. Ask around on tuesday.
+			return false;
 		
-		return false; //change this as you need.
+
+		ListNode cur = this.head.next, prev = null;
+
+		while (cur != null && !cur.data.equals(o))
+		{
+			prev=cur;
+			cur=cur.next;
+		}
+
+		if(cur == null) return false; //cur doesnt exist
+		
+		return true;
 	}
 	
 	// Removes the first occurrence of the specified element o from this list and returns true, if it is present. 
@@ -64,8 +76,35 @@ public class MyLinkedList {
 	//     (o==null ? get(i)==null : o.equals(get(i))) (if such an element exists).
 	// Note: you have to handle the case where a list node stores null data element.
 	public boolean remove(Object o) {
+
+		//TODO: Currently does not do nulls. Ask around on tuesday.
+
+		if(isEmpty() || o == null) return false;
 		
-		return false; //change this as you need.
+
+		ListNode cur = this.head.next, prev = null;
+
+		while (cur != null && !cur.data.equals(o))
+		{
+			prev=cur;
+			cur=cur.next;
+		}
+
+		//edge cases?
+		//edge cases
+
+		if(cur == null) return false; //cur doesnt exist
+		if(prev == null) //removing from head
+		{
+			this.head = this.head.next;
+			this.size--;
+			return true;
+		}
+
+		prev.next = cur.next;
+		this.size--;
+		
+		return true;
 	}
 
 	// Removes all copies of o from this linked list.
@@ -112,6 +151,15 @@ public class MyLinkedList {
 	//   Continuing on the previous add() call, add(1,"E") will
 	//   change the existing list to [dummy]->["D"]->["E"]->["A"]->["B"]->["C"].
 	public void add(int index, Object o) {
+
+		//TODO: This only works for head. Fix.
+
+		//if(index < 0 || index > this.size) throw new IndexOutOfBoundsException();
+
+		ListNode newNode = new ListNode(o);
+
+		newNode.next = head;
+		head = newNode;
 		
 	}
 	
@@ -121,7 +169,22 @@ public class MyLinkedList {
 	//      the last list node has index of size()-1.
 	// if index < 0 or index >= this.size, throws IndexOutOfBoundsException.
 	public Object get(int index) throws IndexOutOfBoundsException{
-		return null; //change this as you need.
+
+		if (index < 0 || index >= this.size) throw new IndexOutOfBoundsException("Provided index is out of bounds! 4");
+
+		ListNode cur = this.head.next;
+		int slot = 0;
+
+		while (slot < index) {
+			//System.out.println(cur.data);
+			cur = cur.next;
+			slot++;
+		}
+		
+
+
+
+		return cur.data; //change this as you need.
 	}
 	
 	// Removes (cuts out) the list node at the specified index in this list. 
@@ -138,6 +201,29 @@ public class MyLinkedList {
 	//Add the object e to the end of this list.
 	// it returns true, after e is successfully added.
 	public boolean add(Object e) {
+		//TODO: none of this works lmao
+
+		System.out.println("MEMEMEEMEMEMEMEM");
+
+		ListNode newNode = new ListNode(e);
+
+		if(head.data == null) {
+			head = new ListNode(e);
+			return true;
+		}
+
+		newNode.next = null;
+		//System.out.println(newNode.data);
+
+
+		ListNode cur = this.head.next;
+
+		while(cur != null){
+			cur = cur.next;
+		}
+
+		cur = newNode;
+		 
 		
 		return true; //change this as you need.
 	}
