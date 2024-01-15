@@ -8,7 +8,7 @@ Completion (as of 1/14:)
 * remove: ⭕ (fails all tests with nulls)
 * removeAllCopies: ❌
 * add: ⭕ (only adds on head)
-* get:❌
-* remove:✔️
+* get:✔️
+* remove:❌
 * add: ⭕ (Nothing happens)
   
