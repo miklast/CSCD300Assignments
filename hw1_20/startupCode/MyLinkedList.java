@@ -43,8 +43,20 @@ public class MyLinkedList {
 	//       in this list, then returns the data in the node removed.
 	// If the size of this list is zero, throws an Exception.
 	public Object removeFirst() throws Exception {
+
+		if(size < 1) throw new Exception("LinkedList is empty!"); //exception checking
+
+		ListNode cur = this.head.next, prev = null; //find nodes
+
+		if(prev == null) //removing from head
+		{
+			this.head = this.head.next;
+			this.size--;
+		}
 		
-		return null; //change this as you need.
+
+		
+		return cur.data; //change this as you need.
 	}
 	
 	// Returns true if this list contains the specified element o. 
@@ -154,7 +166,7 @@ public class MyLinkedList {
 
 		//TODO: This only works for head. Fix.
 
-		//if(index < 0 || index > this.size) throw new IndexOutOfBoundsException();
+		//if(index < 0 || index > this.size) throw new IndexOutOfBoundsException(); //this force kills it the 2nd time?
 
 		ListNode newNode = new ListNode(o);
 
@@ -201,29 +213,20 @@ public class MyLinkedList {
 	//Add the object e to the end of this list.
 	// it returns true, after e is successfully added.
 	public boolean add(Object e) {
-		//TODO: none of this works lmao
-
-		System.out.println("MEMEMEEMEMEMEMEM");
 
 		ListNode newNode = new ListNode(e);
 
-		if(head.data == null) {
-			head = new ListNode(e);
+		if(head == null) { //create head if needed
+			head = newNode;
 			return true;
 		}
 
-		newNode.next = null;
-		//System.out.println(newNode.data);
-
-
-		ListNode cur = this.head.next;
-
-		while(cur != null){
-			cur = cur.next;
+		ListNode last = head; //go to head
+		while(last.next != null) {//find last node
+			last = last.next;
 		}
 
-		cur = newNode;
-		 
+		last.next = newNode;// set last to data
 		
 		return true; //change this as you need.
 	}
