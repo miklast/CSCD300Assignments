@@ -192,9 +192,6 @@ public class MyLinkedList {
 			cur = cur.next;
 			slot++;
 		}
-		
-
-
 
 		return cur.data; //change this as you need.
 	}
@@ -205,8 +202,30 @@ public class MyLinkedList {
 	//      the last list node has index of size()-1.
 	// if index < 0 or index >= this.size, throws IndexOutOfBoundsException.
 	public Object remove(int index) throws IndexOutOfBoundsException {
+
+		if(index < 0 || index >= this.size) throw new IndexOutOfBoundsException("Provided index is out of bounds! 2");
+
+		ListNode cur = this.head.next, prev = null;
+		int slot = 0;
+
+		while (cur != null && slot < index)
+		{
+			prev=cur;
+			cur=cur.next;
+			slot++;
+		}
 		
-		return null; //change this as you need.
+		if(prev == null) //removing from head
+		{
+			this.head = this.head.next;
+			this.size--;
+			return cur;
+		}
+
+		prev.next = cur.next;
+		this.size--;
+		
+		return cur; //change this as you need.
 	}
 
 	
