@@ -9,6 +9,6 @@ Completion (as of 1/15:)
 * removeAllCopies: ❌
 * add: ⭕ (only adds on head)
 * get:✔️
-* remove:❌
+* remove:✔️
 * add: ✔️
   
