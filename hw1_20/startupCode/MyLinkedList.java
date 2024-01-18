@@ -65,13 +65,13 @@ public class MyLinkedList {
 	// Note: you have to handle the case where a list node stores null data element.
 	public boolean contains(Object o) {
 
-		if(isEmpty() || o == null) //TODO: This fails test 1. Ask around on tuesday.
+		ListNode cur = this.head.next, prev = null;
+
+		if(isEmpty())
 			return false;
 		
 
-		ListNode cur = this.head.next, prev = null;
-
-		while (cur != null && !cur.data.equals(o))
+		while (cur != null && !(cur.data == o))
 		{
 			prev=cur;
 			cur=cur.next;
@@ -89,21 +89,17 @@ public class MyLinkedList {
 	// Note: you have to handle the case where a list node stores null data element.
 	public boolean remove(Object o) {
 
-		//TODO: Currently does not do nulls. Ask around on tuesday.
-
-		if(isEmpty() || o == null) return false;
+		if(isEmpty()) return false;
 		
 
 		ListNode cur = this.head.next, prev = null;
 
-		while (cur != null && !cur.data.equals(o))
+		while (cur != null && !(cur.data == o))
 		{
 			prev=cur;
 			cur=cur.next;
 		}
 
-		//edge cases?
-		//edge cases
 
 		if(cur == null) return false; //cur doesnt exist
 		if(prev == null) //removing from head
@@ -130,8 +126,19 @@ public class MyLinkedList {
 	//        Be careful when removing all "A"s in this example.
 	// Note: This list may contains zero, one or multiple copies of null data elements.
 	public boolean removeAllCopies( Object o ) { //passed test
+
+		ListNode cur = this.head.next, prev = null;
+
+		while(cur != null) {//walk through list
+			if(o == cur.data) {
+				remove(o);
+			}
+
+			prev=cur;
+			cur=cur.next;
+		}
 		
-		return false; //change this as you need.
+		return true; //change this as you need.
 	}
 	
 	// Insert data elements from linkedlist A and B alternately into 
@@ -149,6 +156,33 @@ public class MyLinkedList {
 	//       C will be {1, 2, 3, 4, 5, 6, 8, 10}.
 	// Note: after this method is called, both list A and B are UNCHANGED.
 	public static MyLinkedList interleave(MyLinkedList A, MyLinkedList B) {
+
+		//TODO: none of this works. I dont even know where to start.
+		ListNode aCur = A.head.next;
+		ListNode bCur = B.head.next;
+		MyLinkedList C;
+
+
+		int slot = 0;
+		int maxSize = A.size() + B.size();
+
+		// System.out.print(maxSize);
+
+		// while(slot < maxSize) {
+		// 	aCur = aCur.next; bCur = bCur.next;
+
+			
+		// 	if((slot % 2) == 0 && aCur.data != null) {
+		// 		System.out.println("a");
+		// 		slot++;
+		// 	}
+		// 	else if (!((slot%2) == 0) && bCur.data != null) {
+		// 		System.out.println("b");
+		// 		slot++;
+		// 	}
+
+		// }
+
 		
 		return null; //change this as you need.
 	}
@@ -163,15 +197,28 @@ public class MyLinkedList {
 	//   Continuing on the previous add() call, add(1,"E") will
 	//   change the existing list to [dummy]->["D"]->["E"]->["A"]->["B"]->["C"].
 	public void add(int index, Object o) {
+		
+		if (index < 0 || index > this.size) throw new IndexOutOfBoundsException("Index Passed in not valid!"); //this force kills it the 2nd time?
 
-		//TODO: This only works for head. Fix.
-
-		//if(index < 0 || index > this.size) throw new IndexOutOfBoundsException(); //this force kills it the 2nd time?
-
+		ListNode cur = this.head.next, prev = null; //create nodes/slot
+		int slot = 0;
 		ListNode newNode = new ListNode(o);
 
-		newNode.next = head;
-		head = newNode;
+		while (cur != null && slot < index) //find index
+		{
+			prev=cur;
+			cur=cur.next;
+			slot++;
+		}
+
+		if(prev == null) {
+			addFirst(newNode.data);
+		}
+		else {
+			newNode.next = prev.next;
+			prev.next = newNode;
+			this.size++;
+		}
 		
 	}
 	
@@ -188,7 +235,6 @@ public class MyLinkedList {
 		int slot = 0;
 
 		while (slot < index) {
-			//System.out.println(cur.data);
 			cur = cur.next;
 			slot++;
 		}
@@ -205,16 +251,16 @@ public class MyLinkedList {
 
 		if(index < 0 || index >= this.size) throw new IndexOutOfBoundsException("Provided index is out of bounds! 2");
 
-		ListNode cur = this.head.next, prev = null;
+		ListNode cur = this.head.next, prev = null; //create nodes/slot
 		int slot = 0;
 
-		while (cur != null && slot < index)
+		while (cur != null && slot < index) //find index
 		{
 			prev=cur;
 			cur=cur.next;
 			slot++;
 		}
-		
+
 		if(prev == null) //removing from head
 		{
 			this.head = this.head.next;
