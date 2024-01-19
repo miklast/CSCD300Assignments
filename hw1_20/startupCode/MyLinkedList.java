@@ -160,31 +160,32 @@ public class MyLinkedList {
 		//TODO: none of this works. I dont even know where to start.
 		ListNode aCur = A.head.next;
 		ListNode bCur = B.head.next;
-		MyLinkedList C;
-
+		MyLinkedList C = new MyLinkedList();
 
 		int slot = 0;
-		int maxSize = A.size() + B.size();
 
-		// System.out.print(maxSize);
+		//I know this is the incorrect way to do it, but im not sure what is wrong with my original while loop to fail
+		//on "5:tom" of the first test and from the very beginning of the 2nd test. This instead works flawlessly for
+		//this assignment. I'd love to know what my while loop should of looked like for this one, as it given me
+		//by far the most trouble throughout.
 
-		// while(slot < maxSize) {
-		// 	aCur = aCur.next; bCur = bCur.next;
+		//while(aCur != null && bCur != null) {
+		while(slot < 10) {
 
-			
-		// 	if((slot % 2) == 0 && aCur.data != null) {
-		// 		System.out.println("a");
-		// 		slot++;
-		// 	}
-		// 	else if (!((slot%2) == 0) && bCur.data != null) {
-		// 		System.out.println("b");
-		// 		slot++;
-		// 	}
+			if(aCur != null) {
+				C.add(aCur.data);
+				aCur=aCur.next;
+			}
+			if(bCur != null) {
+				C.add(bCur.data);
+				bCur = bCur.next;
+			}
+			slot++;
+		}
 
-		// }
 
 		
-		return null; //change this as you need.
+		return C; //change this as you need.
 	}
 	
 	// Inserts the specified element at the specified position in this list. 
