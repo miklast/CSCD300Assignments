@@ -41,6 +41,12 @@ public class CDoublyLinkedList {
 	// Note: this list is allowed to store null data element in its list node.
 	public void addLast(Object data) {
 
+		Node cur = this.head.next, prev = null; //create nodes/slot
+		Node nodeNext = null, nodePrev = null;
+		Node newNode = new Node(data, cur, prev);
+
+
+
 	}
 	
 	// Write the subListOfSmallerValues method.  
@@ -62,8 +68,24 @@ public class CDoublyLinkedList {
 	// The method should return true if successful, false otherwise. 
 	// Note that list node may contain null data element. Please handle this edge case.
 	public boolean removeStartingAtBack(Object dataToRemove) {
+		Node cur = this.head.next, prev = null; //create nodes/slot
+
+		while(cur != this.head && !(cur.data == dataToRemove)) {
+			cur=cur.next;
+		}
+
+
+		if(cur == head) return false;
+
+
+
+		cur.prev.next = cur.next;
+		cur.next.prev = cur.prev;
+		this.size--;
+
+		
 	
-		return false;//change this as needed.
+		return true;//change this as needed.
 	}
 	
 	// Returns the index of the last occurrence of the specified element in this list, 
