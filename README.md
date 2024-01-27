@@ -1,10 +1,10 @@
 # CSCD300Assignments
 
 ## HW 2: Due 1/29
-Completion (as of 1/24:)
+Completion (as of 1/26:)
 
 * addLast: ✔️
-* subListOfSmallerValues: ❌
+* subListOfSmallerValues: ✔️
 * removeStartingAtBack: ✔️ 
 * lastIndexOf: ✔️
 * retainAll: ❌ 

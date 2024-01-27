@@ -42,7 +42,7 @@ public class CDoublyLinkedList {
 	public void addLast(Object data) {
 
 		if(size < 1){
-			addFirst(data);
+			addFirst(data);//piggyback on addfirst to do from head
 			return;
 		}
 
@@ -66,8 +66,23 @@ public class CDoublyLinkedList {
         // the method call returns a list that contains data in A that is smaller than 10, the passed-in argument.
         // That is, the returned list contains { 9, 6, 4, 7}.
 	public CDoublyLinkedList subListOfSmallerValues(Comparable data) {
+
+		Node cur = this.head.next, prev = null; //create nodes/slot
+		CDoublyLinkedList comparableList = new CDoublyLinkedList();
+
+		while(cur != this.head) {
+
+			if(cur.data == null) {//it wanted null handling?
+				cur=cur.next;
+				continue;
+			}
+			if(((Comparable)cur.data).compareTo(data) < 0) {//Compare data's index to cur's index. If less, drop into statement
+				comparableList.addLast(cur.data); //send data to new list
+			}
+			cur=cur.next;
+		}
 	
-		return null; //change this as needed.
+		return comparableList; //change this as needed.
 	}
 	
 	// This method should remove the first occurrence of the data from the list, 
