@@ -104,7 +104,23 @@ public class CDoublyLinkedList {
 	// Note: a list node may store a null data element. Please handle this edge case.
 	public int lastIndexOf(Object o) {
 
-		return -1; //change this as needed.
+		Node cur = this.head.next, prev = null; //create nodes/slot
+		int slot = 0;
+		int lastSeen = -1; //defaults to -1 for "no index"
+
+		while(cur != this.head) {//walk list
+
+			if(cur.data == o) {//match?
+				lastSeen = slot; //mark slot
+			}	
+			cur = cur.next; //continue
+			slot++;
+
+			
+		}
+
+
+		return lastSeen; //change this as needed.
 	}
 	
 	

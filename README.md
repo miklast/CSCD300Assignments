@@ -6,7 +6,7 @@ Completion (as of 1/24:)
 * addLast: ✔️
 * subListOfSmallerValues: ❌
 * removeStartingAtBack: ✔️ 
-* lastIndexOf: ❌
+* lastIndexOf: ✔️
 * retainAll: ❌ 
 * insertionSort: ❌ 
 
