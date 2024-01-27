@@ -3,7 +3,7 @@
 ## HW 2: Due 1/29
 Completion (as of 1/24:)
 
-* addLast: ❌
+* addLast: ✔️
 * subListOfSmallerValues: ❌
 * removeStartingAtBack: ✔️ 
 * lastIndexOf: ❌

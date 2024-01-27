@@ -41,9 +41,17 @@ public class CDoublyLinkedList {
 	// Note: this list is allowed to store null data element in its list node.
 	public void addLast(Object data) {
 
-		Node cur = this.head.next, prev = null; //create nodes/slot
-		Node nodeNext = null, nodePrev = null;
-		Node newNode = new Node(data, cur, prev);
+		if(size < 1){
+			addFirst(data);
+			return;
+		}
+
+		Node last = head.prev; //find end of list
+		Node newNode = new Node(data, head.next.prev, head); //create node
+		head.prev = newNode; //connect everything together
+		newNode.prev = last;
+		last.next = newNode;
+		size++;
 
 
 
