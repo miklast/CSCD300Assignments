@@ -8,7 +8,7 @@ Completion (as of 1/26:)
 * removeStartingAtBack: ✔️ 
 * lastIndexOf: ✔️
 * retainAll: ✔️
-* insertionSort: ❌ 
+* insertionSort: ✔️ 
 
 
 ## HW 1: Due 1/18

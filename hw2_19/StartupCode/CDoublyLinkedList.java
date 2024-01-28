@@ -179,13 +179,26 @@ public class CDoublyLinkedList {
 		}
 
 
-	    return false; //change this as needed.
+	    return true; //change this as needed.
 	}
 	
 
         // Write this method to sort this list using insertion sort algorithm, 
         //      as we have learned in the classroom.
 	public void insertionSort() {
+
+		//Bassed on slide 10 of Lecture 7 PDF
+		Node lastSorted, sortedWalker;
+		Comparable firstUnsortedData;
+
+		for(lastSorted = this.head.next; lastSorted !=this.head.prev; lastSorted = lastSorted.next) {
+			firstUnsortedData = (Comparable)lastSorted.next.data;
+			for(sortedWalker = lastSorted; sortedWalker != head && ((Comparable)sortedWalker.data).compareTo(firstUnsortedData) >0;
+			 sortedWalker = sortedWalker.prev) {
+				sortedWalker.next.data = sortedWalker.data;
+			}
+			sortedWalker.next.data = firstUnsortedData;
+		}
 		
 	}
 	
