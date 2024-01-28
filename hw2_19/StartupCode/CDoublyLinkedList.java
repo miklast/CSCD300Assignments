@@ -146,6 +146,37 @@ public class CDoublyLinkedList {
 	// If other list is null, throws NullPointerException.
         // Helper methods are allowed.
 	public boolean retainAll(CDoublyLinkedList other) throws NullPointerException {
+		//System.out.println(other);
+
+		if(other == null) {
+			throw new NullPointerException();
+		}
+
+		Node cur = this.head.next, prev = null;
+		Node oCur = other.head.next, oPrev = null;
+		int lastSeen = 0;
+
+		while(cur != this.head) {
+			oCur = other.head.next;
+			//System.out.println("current cur: " + cur.data);
+			while(oCur != other.head) {
+				if(cur.data == oCur.data) {
+					lastSeen = 1;
+					
+				}
+				//System.out.println(lastSeen + " " + cur.data + " " + oCur.data);
+				oCur = oCur.next;
+
+			}
+
+			if(lastSeen == 0) {
+				cur.prev.next = cur.next;
+				cur.next.prev = cur.prev;
+				this.size--;
+			}
+			lastSeen = 0;
+			cur = cur.next;
+		}
 
 
 	    return false; //change this as needed.
