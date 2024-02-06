@@ -1,12 +1,11 @@
 # CSCD300Assignments
 
 ## HW 3: Due 2/5
-Completion (as of 1/30:)
+Completion (as of 2/5:)
 
-* reverse:❌
-* reverse:❌
-* reverse2:❌
-* reverse:❌
+* reverse:✔️
+* reverse2:✔️
+* reverse:✔️
 * countSpace:❌
 * myContains:❌
 * div:❌

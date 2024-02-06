@@ -57,8 +57,15 @@ public class MyLinkedList {
 	 * @return A new MyLinkedList object contains the same set of data items, but in a reversed order.
 	 */
 	private MyLinkedList reverse(ListNode node) {
-		
-		return null; // change this line of code as needed
+
+
+		if(node == null) return new MyLinkedList();
+
+		MyLinkedList reversedList = reverse(node.next);
+		reversedList.addEnd(node.data);
+
+
+		return reversedList; // change this line of code as needed
 	}
 	
 	
@@ -89,8 +96,28 @@ public class MyLinkedList {
 	 */
 	private ListNode reverse(ListNode first, ListNode second) {
 
+		ListNode nHead = null;
+
+		if(second == null) return first;
+		else {
+			nHead = reverse(second, second.next);
+			second.next = first;
+			first.next = null;
+		}
+
 		
-		return null; //change this line of code as needed.
+		return nHead; //change this line of code as needed.
+	}
+
+	public void addEnd(Object e) {
+		ListNode cur = head;
+		ListNode obj = new ListNode(e);
+
+		while(cur.next != null) {
+			cur = cur.next;
+		}
+		cur.next = obj;
+		this.size++;
 	}
 	
 	/**
