@@ -27,7 +27,19 @@ public class Tester {
 	// Write this method below.
 	public int countSpace(String str) {	
 
-		return -1; //change this line of code as needed.
+		if(str.length() > 1) {
+			if(str.charAt(0) == ' ') {
+				return 1 + countSpace(str.substring(1));
+			}
+			else return 0 + countSpace(str.substring(1));
+		}
+		else {
+			if(str.charAt(0) == ' ') {
+				return 1;
+			}
+			else return 0;
+
+		}
 
 	}
 	
