@@ -6,12 +6,12 @@ Completion (as of 2/5:)
 * reverse:✔️
 * reverse2:✔️
 * reverse:✔️
-* countSpace:❌
-* myContains:❌
-* div:❌
-* isSum24:❌
-* reverseArray:❌
-* recursiveSelectionSort:❌
+* countSpace:✔️
+* myContains:✔️
+* div:✔️
+* isSum24:✔️
+* reverseArray:✔️
+* recursiveSelectionSort:✔️
 
 ## HW 2: Due 1/29
 Completion (as of 1/26:)

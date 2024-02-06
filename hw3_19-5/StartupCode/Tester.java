@@ -85,8 +85,11 @@ public class Tester {
 	//       equals to the targetSum or not.
 	// Hint:the subproblem is about a subarray.
 	private boolean isSum24(int arr[], int targetSum) {
+
+		if(arr.length == 0) return false;
+		else if(arr.length == 1) return arr[0] == targetSum;
 	
-		return false; //change this line of code as needed.
+		return isSum24(Arrays.copyOfRange(arr, 1, arr.length), targetSum - arr[0]); //change this line of code as needed.
 	}
 	
 	//You are NOT allowed to change the provided code in the *public* 
@@ -101,6 +104,14 @@ public class Tester {
 	//E.g. if int a[] ={3, 1, 5, 4}, after reverseArray(a, 0, 3) is called,
 	//       array a becomes {4, 5, 1, 3}.
 	private void reverseArray(int a[], int low, int high) {
+
+		int t = a[high];
+		a[high] = a[low];
+		a[low] = t;
+
+		if(--high >= ++low) {
+			reverseArray(a, low, high);
+		}
 	
 
 	}
@@ -115,10 +126,22 @@ public class Tester {
 	//The method will sort in an ascending order the array elements 
 	//      that are located at indices ranging from low to high.
 	//This is a version of recursive selection sort.
-	private void recursiveSelectionSort(int a[], int low, int high) 
-	{
+	private void recursiveSelectionSort(int a[], int low, int high) {
 
+		int small = low;
+		int temp;
 
+		for(int i = low+1; i < a.length; i++) {
+			if(a[i] < a[small]) small = i;
+		}
+
+		if(a[small] != a[low]) {
+			temp = a[small];
+			a[small] = a[low];
+			a[low] = temp;
+		}
+
+		if(++low < high) recursiveSelectionSort(a, low, high);
 
 	}//end of method
 	
