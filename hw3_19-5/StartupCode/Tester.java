@@ -47,12 +47,15 @@ public class Tester {
 	//For example, if s1="an", and s2="banana", it returns true.
 	//For another example, if s1="bb" and s2="good", it returns false.
 	//If either s1 or s2 is null, return false. 
-	//If either s1 or s2 is empty, return false.
+	//If either s1 or s2 is empty, return false.(
 	//You are NOT allowed to use the contains() method in Java String class.
 	//Write the method below using recursion.
 	public boolean myContains(String s1, String s2){
-	
-		return false; //change this line of code as needed.
+
+		if ((s1 == null || s2 == null) || s2.length() < s1.length()) return false;
+
+		if(s2.startsWith(s1)) return true;
+		return(myContains(s1, s2.substring(1)));
 	}
 	// Compute the quotient of the integer division of (m / n) using recursion, 
 	// you are NOT allowed to use mathematics operation '/'.
@@ -61,7 +64,12 @@ public class Tester {
 	// If n == 0, throw an IllegalArgumentException object.
 	// Write this method below using recursion.
 	public int div(int m, int n) throws IllegalArgumentException {
-		return -1; //change this line of code as needed.
+		if(n==0) throw new IllegalArgumentException("Cant divide by zero");
+
+		if(m-n==0) return 1;
+		else if(m < n) return 0;
+
+		return (1+div(m-n,n)); //change this line of code as needed.
 	}
 	
 	//Check whether the sum of array arr is 24 or not.
